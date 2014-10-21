@@ -2319,7 +2319,7 @@ class GCENodeDriver(NodeDriver):
             return self._to_node_image(response.object)
         image = self._match_images(None, partial_name)
         if not image:
-            if partial_name.startswith('debian'):
+            if (partial_name.startswith('debian') or partial_name.startswith('backport')):
                 image = self._match_images('debian-cloud', partial_name)
             elif partial_name.startswith('centos'):
                 image = self._match_images('centos-cloud', partial_name)
